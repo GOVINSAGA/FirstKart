@@ -11,7 +11,10 @@ namespace DataAccessLayer
 
         public DbSet<Category> Categories { get; set; }
         public DbSet<Product> Products { get; set; }
-
+        public DbSet<Role> Roles { get; set; }
+        public DbSet<User> Users { get; set; }
+        public DbSet<PurchaseDetail> PurchaseDetails { get; set; }
+        public DbSet<CardDetail> CardDetails { get; set; }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
 
@@ -23,5 +26,13 @@ namespace DataAccessLayer
 
             }
         }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Category>()
+                        .HasAlternateKey("CategoryName")
+                        .HasName("uq_CategoryName");
+        }
+
     }
 }

@@ -9,6 +9,7 @@ namespace DataAccessLayer.Models
     public class Product
     {
 
+        [Key]
         public string ProductId { get; set; }
 
         [Required]
@@ -27,5 +28,7 @@ namespace DataAccessLayer.Models
         public int QuantityAvailable { get; set; }
 
         public Category Category { get; set; }
+
+        public ICollection<PurchaseDetail> PurchaseDetails { get; set; }
     }
 }
